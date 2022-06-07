@@ -1,0 +1,15 @@
+[run]
+
+branch = True
+omit =
+    mutantsIdentifier/mutantsIdentifierTest.py
+    statistics/statisticsTest.py
+
+[report]
+
+omit =
+    mutantsIdentifier/mutantsIdentifierTest.py
+    statistics/statisticsTest.py
+
+precision = 2
+show_missing = True
