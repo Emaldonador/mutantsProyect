@@ -21,7 +21,7 @@ ElasticSearch es el servicio usado para la persistencia de las cadenas de ADN pr
 
 *coverage run -m pytest mutantsIdentifier/mutantsIdentifierTest.py*
 
-*coverage run -m pytest mutantsIdentifier/statisticsFunctionTest.py*
+*coverage run -m pytest mutantsIdentifier/statisticsTest.py*
 
 *coverage report*
 
