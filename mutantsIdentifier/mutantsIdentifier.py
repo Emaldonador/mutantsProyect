@@ -55,25 +55,21 @@ def lambda_handler(event, context):
     # TODO implement
 
     adn = event['dna']
-    print(adn)
     valid = validateAdn(adn)
     if valid:
         if isMutant(adn):
-            print("Es mutante")
             save(adn,'mutante')
             return {
             'statusCode': 200,
             'body': json.dumps('Es mutante')
         }
         else:
-            print("Es humano")
             save(adn,'humano')
             return {
             'statusCode': 403,
             'body': json.dumps('Es humano')
         }
     else:
-        print('ADN no valido')
         save(adn,'no_valido')
         return {
             'statusCode': 409,
