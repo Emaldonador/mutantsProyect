@@ -1,8 +1,21 @@
 
 
 import requests
-
+import re
 import json
+
+def validateAdn(adn):
+    n = len(adn)
+    valid = True
+    pattern = re.compile(r"[^C^G^T^A]")
+    raw = 0
+    while raw < n and valid:
+        s = pattern.findall(adn[raw])
+        if len(s) > 0 or len(adn[raw]) != n:
+            valid = False
+        else:
+            raw += 1
+    return valid
 
 def isMutant(adn):
     n = len(adn)
@@ -37,4 +50,33 @@ def save(adn, result):
     "result": result
     }
     r = requests.request('POST',url,headers=headers,json=body)
-    print(r)
+
+def lambda_handler(event, context):
+    # TODO implement
+
+    adn = event['dna']
+    print(adn)
+    valid = validateAdn(adn)
+    if valid:
+        if isMutant(adn):
+            print("Es mutante")
+            save(adn,'mutante')
+            return {
+            'statusCode': 200,
+            'body': json.dumps('Es mutante')
+        }
+        else:
+            print("Es humano")
+            save(adn,'humano')
+            return {
+            'statusCode': 403,
+            'body': json.dumps('Es humano')
+        }
+    else:
+        print('ADN no valido')
+        save(adn,'no_valido')
+        return {
+            'statusCode': 409,
+            'body': json.dumps('adn no valido')
+        }
+
