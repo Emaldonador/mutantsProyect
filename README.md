@@ -1,5 +1,5 @@
 ## **mutantsProyect**
-Implementa a través de API Gateway Amazon AWS un servicio de API REST con dos recursos: MutantsIdentifier y Statitistics, El primero determina si una cadena de ADN recibida corresponde a un mutante o a un humano. El segundo retorna los datos estadísticos de las cadenas de adn analizadas.
+Implementa a través de API Gateway Amazon AWS un servicio de API REST con dos recursos: mutants y stats, El primero determina si una cadena de ADN recibida corresponde a un mutante o a un humano. El segundo retorna los datos estadísticos de las cadenas de adn analizadas.
 
 Para la implementación se usa lenguaje Python dentro del marco de Amazon AWS Lambda.
 
